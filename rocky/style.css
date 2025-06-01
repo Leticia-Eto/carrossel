@@ -1,0 +1,308 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 20px;
+ }
+
+ .carousel-container {
+     width: 100%;
+     max-width: 900px;
+     height: 500px;
+     position: relative;
+     border-radius: 20px;
+     overflow: hidden;
+     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+     background: #000;
+ }
+
+ .carousel-slide {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     opacity: 0;
+     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+     transform: translateX(100px);
+ }
+
+ .carousel-slide.active {
+     opacity: 1;
+     transform: translateX(0);
+ }
+
+ .slide-background {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-size: cover;
+     background-position: center;
+     filter: brightness(0.7);
+ }
+
+ .slide-content {
+     position: relative;
+     z-index: 2;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     padding: 60px;
+     color: white;
+ }
+
+ .slide-info {
+     flex: 1;
+     max-width: 50%;
+ }
+
+ .slide-title {
+     font-size: 4rem;
+     font-weight: 300;
+     margin-bottom: 10px;
+     letter-spacing: 3px;
+     text-transform: uppercase;
+     animation: slideInLeft 0.8s ease-out;
+ }
+
+  .slide-subtitle {
+     font-size: 1rem;
+     line-height: 1.6;
+     font-weight: bold;
+     margin-bottom: 5px;
+     opacity: 0.9;
+     animation: slideInLeft 0.8s ease-out 0.2s both;
+ }
+
+ .slide-description {
+     font-size: 1.1rem;
+     line-height: 1.6;
+     margin-bottom: 30px;
+     opacity: 0.9;
+     animation: slideInLeft 0.8s ease-out 0.2s both;
+ }
+
+ .explore-btn {
+     background: rgba(255, 255, 255, 0.2);
+     border: 2px solid rgba(255, 255, 255, 0.3);
+     color: white;
+     padding: 12px 30px;
+     border-radius: 25px;
+     cursor: pointer;
+     font-size: 1rem;
+     font-weight: 500;
+     transition: all 0.3s ease;
+     backdrop-filter: blur(10px);
+     animation: slideInLeft 0.8s ease-out 0.4s both;
+ }
+
+ .explore-btn:hover {
+     background: rgba(255, 255, 255, 0.3);
+     border-color: rgba(255, 255, 255, 0.5);
+     transform: translateY(-2px);
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+ }
+
+ .slide-images {
+     position: absolute;
+     right: 60px;
+     top: 50%;
+     transform: translateY(-50%);
+     display: flex;
+     gap: 15px;
+     animation: slideInRight 0.8s ease-out 0.3s both;
+     
+ }
+
+
+
+ .small-image:hover {
+     transform: translateY(-10px) scale(1.05);
+     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+ }
+
+
+
+ .small-image {
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+     position: relative;
+
+ }
+
+ /* Estilo padrão para as imagens */
+ .small-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transition: transform 0.5s ease;
+     object-position: bottom 80%;
+ }
+
+
+ .carousel-nav {
+     position: absolute;
+     bottom: 30px;
+     left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     gap: 15px;
+     z-index: 10;
+ }
+
+ .nav-dot {
+     width: 12px;
+     height: 12px;
+     border-radius: 50%;
+     background: rgba(255, 255, 255, 0.4);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border: 2px solid transparent;
+ }
+
+ .nav-dot.active {
+     background: white;
+     transform: scale(1.3);
+     box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+ }
+
+ .slide-images {
+     position: absolute;
+     right: 60px;
+     top: 70%;
+     transform: translateY(-50%);
+     display: flex;
+     gap: 15px;
+     animation: slideInRight 0.8s ease-out 0.3s both;
+ }
+
+ .small-image {
+     width: 150px;
+     height: 150px;
+     border-radius: 15px;
+     overflow: hidden;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+     transition: all 0.3s ease;
+     cursor: pointer;
+     position: relative;
+ }
+
+ .small-image::after {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+     border-radius: 15px;
+ }
+
+ .small-image:hover::after {
+     background: rgba(255, 255, 255, 0.1);
+ }
+
+ .small-image:hover {
+     transform: translateY(-10px) scale(1.05);
+     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+ }
+
+ @keyframes slideInLeft {
+     from {
+         opacity: 0;
+         transform: translateX(-50px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ @keyframes slideInRight {
+     from {
+         opacity: 0;
+         transform: translateX(50px) translateY(-50%);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateX(0) translateY(-50%);
+     }
+ }
+
+ .slide-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+     z-index: 1;
+ }
+
+ @media (max-width: 768px) {
+     .carousel-container {
+         height: 400px;
+         margin: 10px;
+     }
+
+     .slide-content {
+         padding: 30px;
+         flex-direction: column;
+         text-align: center;
+     }
+
+     .slide-info {
+         max-width: 100%;
+         margin-bottom: 20px;
+     }
+
+     .slide-title {
+         font-size: 2.5rem;
+         margin-bottom: 15px;
+     }
+
+     .slide-images {
+         position: relative;
+         right: auto;
+         top: auto;
+         transform: none;
+         justify-content: center;
+         animation: slideInUp 0.8s ease-out 0.3s both;
+     }
+
+     .small-image {
+         width: 80px;
+         height: 100px;
+     }
+ }
+
+ @keyframes slideInUp {
+     from {
+         opacity: 0;
+         transform: translateY(30px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ .carousel-slide {
+     display: none;
+ }
+
+ .carousel-slide.active {
+     display: block;
+ }
